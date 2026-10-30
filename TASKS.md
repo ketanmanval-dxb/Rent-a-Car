@@ -59,8 +59,8 @@ Read `CLAUDE.md` and `AGENTS.md` first. Local-first: no cloud accounts; deployme
 - Q6 [qa] DONE: Migrations on a clean database; `pnpm build` passes
 - Q7 [qa] DOING: Report bugs (Bugs section), retest fixes
 
-### Deployment (BLOCKED until owner provides cloud links)
-- X1 [lead] BLOCKED: Vercel project, Neon via Marketplace, preview + production envs, Blob, payment test keys + webhook secret, migrations on deploy, deployed e2e
+### Deployment
+- X1 [lead] DONE: Vercel project, Neon via Marketplace, preview + production envs, migrations on deploy, seed data loaded, live at https://rent-a-car-ashen.vercel.app
 - X2 [lead] DONE: README (local setup, env vars, migrations, testing, Vercel deployment steps)
 
 ## Messages
