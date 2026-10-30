@@ -14,6 +14,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx --env-file=.env.local scripts/seed.ts",
     "cron": "tsx --env-file=.env.local scripts/cron.mts",
     "fake-pay": "tsx --env-file=.env.local scripts/fake-payments.mts"
   },
