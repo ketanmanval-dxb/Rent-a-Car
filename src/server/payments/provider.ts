@@ -11,7 +11,7 @@ export function getPaymentProvider(): PaymentProvider {
   switch (kind) {
     case "fake":
       instance = new FakePaymentProvider({
-        stateFile: path.resolve(process.env.FAKE_PAYMENT_STATE_FILE ?? "./storage/fake-payments/state.json"),
+        stateFile: path.resolve(/*turbopackIgnore: true*/ process.env.FAKE_PAYMENT_STATE_FILE ?? "./storage/fake-payments/state.json"),
         webhookSecret: required("FAKE_PAYMENT_WEBHOOK_SECRET"),
         webhookUrl: process.env.FAKE_PAYMENT_WEBHOOK_URL || undefined,
         deliveriesPerEvent: Number(process.env.FAKE_PAYMENT_WEBHOOK_DELIVERIES ?? 1),

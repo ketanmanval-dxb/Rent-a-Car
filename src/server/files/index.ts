@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm";
+import { connection } from "next/server";
 import { getSessionFromHeaders, type SessionUser } from "@/server/auth/session";
 import { getDb } from "@/server/db";
 import { damageReports, driverProfiles, reservations } from "@/server/db/schema";
@@ -50,6 +51,7 @@ export const damageImageUrl = (reportId: string, index: number) => `/api/files/d
 
 /** Route-handler helper: authenticate, run the loader, stream privately. */
 export async function serveFile(request: Request, loader: (viewer: SessionUser) => Promise<FileBody>, context: Record<string, unknown>): Promise<Response> {
+  await connection();
   try {
     const session = await getSessionFromHeaders(request.headers);
     if (!session) throw new AppError("UNAUTHENTICATED", "Please sign in.");

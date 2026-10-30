@@ -5,10 +5,20 @@ import { getDb } from "@/server/db";
 import { accounts, sessions, users, verifications } from "@/server/db/schema";
 
 function createAuth() {
+  const baseURL =
+    process.env.BETTER_AUTH_URL ??
+    process.env.APP_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
+
   return betterAuth({
     appName: "DriveEasy",
     secret: process.env.BETTER_AUTH_SECRET,
-    baseURL: process.env.BETTER_AUTH_URL ?? process.env.APP_URL,
+    baseURL,
+    trustedOrigins: [
+      "https://rent-a-car-ashen.vercel.app",
+      ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+      ...(process.env.APP_URL ? [process.env.APP_URL] : []),
+    ],
     database: drizzleAdapter(getDb(), {
       provider: "pg",
       usePlural: true,

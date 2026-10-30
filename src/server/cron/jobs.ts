@@ -15,7 +15,7 @@ export const cronJobs: CronJob[] = [
   {
     name: "release-expired-holds",
     path: "/api/cron/release-expired-holds",
-    schedule: "*/5 * * * *",
+    schedule: "0 0 * * *",
     localEverySeconds: 60,
   },
 ];
